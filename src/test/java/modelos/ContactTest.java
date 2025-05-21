@@ -1,86 +1,84 @@
 package modelos;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import org.junit.Test;
 
 public class ContactTest {
 
-	@Test
-	public void testConstructorContacto() {
-		Contact contact = new Contact(1, "Alvaro", "Zarza", "alvaro@example.com", "123456789", 10);
-		assertEquals(1, contact.getContactId());
-		assertEquals("Alvaro", contact.getFirstName());
-		assertEquals("Zarza", contact.getLastName());
-		assertEquals("alvaro@example.com", contact.getEmail());
-		assertEquals("123456789", contact.getPhone());
-		assertEquals(10, contact.getCustomerId());
-	}
+    @Test
+    public void testConstructorContacto() {
+        Contact contact = new Contact(1L, "Alvaro", "Zarza", "alvaro@example.com", "123456789", 10L);
+        assertThat(contact.getContactId(), is(1L));
+        assertThat(contact.getFirstName(), is("Alvaro"));
+        assertThat(contact.getLastName(), is("Zarza"));
+        assertThat(contact.getEmail(), is("alvaro@example.com"));
+        assertThat(contact.getPhone(), is("123456789"));
+        assertThat(contact.getCustomerId(), is(10L));
+    }
 
-	@Test
-	public void testConstructorContactoInsertar() {
-		Contact contact = new Contact("Antonio", "Lopez", "antonio@example.com", "816489652", 20);
-		assertEquals("Antonio", contact.getFirstName());
-		assertEquals("Lopez", contact.getLastName());
-		assertEquals("antonio@example.com", contact.getEmail());
-		assertEquals("816489652", contact.getPhone());
-		assertEquals(20, contact.getCustomerId());
-	}
+    @Test
+    public void testConstructorContactoInsertar() {
+        Contact contact = new Contact("Antonio", "Lopez", "antonio@example.com", "816489652", 20L);
+        assertThat(contact.getFirstName(), is("Antonio"));
+        assertThat(contact.getLastName(), is("Lopez"));
+        assertThat(contact.getEmail(), is("antonio@example.com"));
+        assertThat(contact.getPhone(), is("816489652"));
+        assertThat(contact.getCustomerId(), is(20L));
+    }
 
-	@Test
-	public void testConstructorContactoActualizar() {
-		Contact contact = new Contact("Alejandro", "Gomez", "alejandro@example.com", "3654784");
-		assertEquals("Alejandro", contact.getFirstName());
-		assertEquals("Gomez", contact.getLastName());
-		assertEquals("alejandro@example.com", contact.getEmail());
-		assertEquals("3654784", contact.getPhone());
-		assertEquals(0, contact.getContactId());
-		assertEquals(0, contact.getCustomerId());
-	}
+    @Test
+    public void testConstructorContactoActualizar() {
+        Contact contact = new Contact("Alejandro", "Gomez", "alejandro@example.com", "3654784");
+        assertThat(contact.getFirstName(), is("Alejandro"));
+        assertThat(contact.getLastName(), is("Gomez"));
+        assertThat(contact.getEmail(), is("alejandro@example.com"));
+        assertThat(contact.getPhone(), is("3654784"));
+    }
 
-	@Test
-	public void TestConstructorContactoEliminar() {
-		Contact contact = new Contact(5);
-		assertEquals(5, contact.getContactId());
-		assertNull(contact.getFirstName());
-		assertNull(contact.getLastName());
-		assertNull(contact.getEmail());
-		assertNull(contact.getPhone());
-		assertEquals(0, contact.getCustomerId());
-	}
+    @Test
+    public void testConstructorContactoEliminar() {
+        Contact contact = new Contact(5L);
+        assertThat(contact.getContactId(), is(5L));
+        assertThat(contact.getFirstName(), is(nullValue()));
+        assertThat(contact.getLastName(), is(nullValue()));
+        assertThat(contact.getEmail(), is(nullValue()));
+        assertThat(contact.getPhone(), is(nullValue()));
+    }
 
-	@Test
-	public void testGetContactId() {
-		Contact contact = new Contact(99);
-		assertEquals(99, contact.getContactId());
-	}
+    @Test
+    public void testGetContactId() {
+        Contact contact = new Contact(99L);
+        assertThat(contact.getContactId(), is(99L));
+    }
 
-	@Test
-	public void testGetFirstName() {
-		Contact contact = new Contact("Martin", "Diaz", "martin@example.com", "123123123", 55);
-		assertEquals("Martin", contact.getFirstName());
-	}
+    @Test
+    public void testGetFirstName() {
+        Contact contact = new Contact("Martin", "Diaz", "martin@example.com", "123123123", 55);
+        assertThat(contact.getFirstName(), is("Martin"));
+    }
 
-	@Test
-	public void testGetLastName() {
-		Contact contact = new Contact("Martin", "Diaz", "martin@example.com", "123123123", 55);
-		assertEquals("Diaz", contact.getLastName());
-	}
+    @Test
+    public void testGetLastName() {
+        Contact contact = new Contact("Martin", "Diaz", "martin@example.com", "123123123", 55);
+        assertThat(contact.getLastName(), is("Diaz"));
+    }
 
-	@Test
-	public void testGetEmail() {
-		Contact contact = new Contact("Martin", "Diaz", "martin@example.com", "123123123", 55);
-		assertEquals("martin@example.com", contact.getEmail());
-	}
+    @Test
+    public void testGetEmail() {
+        Contact contact = new Contact("Martin", "Diaz", "martin@example.com", "123123123", 55);
+        assertThat(contact.getEmail(), is("martin@example.com"));
+    }
 
-	@Test
-	public void testGetPhone() {
-		Contact contact = new Contact("Martin", "Diaz", "martin@example.com", "123123123", 55);
-		assertEquals("123123123", contact.getPhone());
-	}
+    @Test
+    public void testGetPhone() {
+        Contact contact = new Contact("Martin", "Diaz", "martin@example.com", "123123123", 55);
+        assertThat(contact.getPhone(), is("123123123"));
+    }
 
-	@Test
-	public void testGetCustomerId() {
-		Contact contact = new Contact("Martin", "Diaz", "martin@example.com", "123123123", 55);
-		assertEquals(55, contact.getCustomerId());
-	}
+    @Test
+    public void testGetCustomerId() {
+        Contact contact = new Contact("Martin", "Diaz", "martin@example.com", "123123123", 55L);
+        assertThat(contact.getCustomerId(), is(55L));
+    }
 }

@@ -1,34 +1,34 @@
 package modelos;
 
-import static org.junit.Assert.*;
-
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import org.junit.Test;
 
 public class InventoryTest {
 
-	@Test
-	public void testInventory() {
-		Inventory inventory = new Inventory(2, 3, 4);
-		assertEquals(2, inventory.getProductId());
-		assertEquals(3, inventory.getWarehouseId());
-		assertEquals(4, inventory.getQuantity());
-	}
+    @Test
+    public void testInventory() {
+        Inventory inventory = new Inventory(2L, 3L, 4);
+        assertThat(inventory.getProductId(), is(2L));    
+        assertThat(inventory.getWarehouseId(), is(3L));
+        assertThat(inventory.getQuantity(), is(4));     
+    }
 
-	@Test
-	public void testGetProductId() {
-		Inventory inventory = new Inventory(2, 1, 10);
-		assertEquals(2, inventory.getProductId());
-	}
+    @Test
+    public void testGetProductId() {
+        Inventory inventory = new Inventory(2L, 1L, 10);
+        assertThat(inventory.getProductId(), is(2L));
+    }
 
-	@Test
-	public void testGetWarehouseId() {
-		Inventory inventory = new Inventory(1, 4, 10);
-		assertEquals(4, inventory.getWarehouseId());
-	}
+    @Test
+    public void testGetWarehouseId() {
+        Inventory inventory = new Inventory(1L, 4L, 10);
+        assertThat(inventory.getWarehouseId(), is(4L));
+    }
 
-	@Test
-	public void testGetQuantity() {
-		Inventory inventory = new Inventory(1, 2, 5);
-		assertEquals(5, inventory.getQuantity());
-	}
+    @Test
+    public void testGetQuantity() {
+        Inventory inventory = new Inventory(1L, 2L, 5);
+        assertThat(inventory.getQuantity(), is(5));
+    }
 }

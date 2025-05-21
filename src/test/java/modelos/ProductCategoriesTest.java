@@ -1,6 +1,7 @@
 package modelos;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import org.junit.Test;
 
@@ -9,20 +10,20 @@ public class ProductCategoriesTest {
 	@Test
 	public void testConstructorProductCategories() {
 		ProductCategories category = new ProductCategories(1, "CPU");
-		assertNotNull(category);
-		assertEquals(1, category.getCategoryId());
-		assertEquals("CPU", category.getCategoryName());
+
+		assertThat(category.getCategoryId(), is(1L));
+		assertThat(category.getCategoryName(), is("CPU"));
 	}
 
 	@Test
 	public void testGetCategoryId() {
 		ProductCategories category = new ProductCategories(2, "Video Card");
-		assertEquals(2, category.getCategoryId());
+		assertThat(category.getCategoryId(), is(2L));
 	}
 
 	@Test
 	public void testGetCategoryName() {
 		ProductCategories category = new ProductCategories(3, "RAM");
-		assertEquals("RAM", category.getCategoryName());
+		assertThat(category.getCategoryName(), is("RAM"));
 	}
 }
