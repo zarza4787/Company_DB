@@ -1,6 +1,8 @@
 package modelos;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import org.junit.Test;
 
@@ -9,26 +11,25 @@ public class RegionTest {
     @Test
     public void testConstructorRegion() {
         Region region = new Region(1, "Europa");
-        assertNotNull(region);
-        assertEquals(1, region.getRegionId());
-        assertEquals("Europa", region.getRegionName());
+        assertThat(region.getRegionId(), is(1L));
+        assertThat(region.getRegionName(), is("Europa"));
     }
 
     @Test
     public void testGetRegionId() {
         Region region = new Region(2, "América");
-        assertEquals(2, region.getRegionId());
+        assertThat(region.getRegionId(), is(2L));
     }
 
     @Test
     public void testGetRegionName() {
         Region region = new Region(3, "Asia");
-        assertEquals("Asia", region.getRegionName());
+        assertThat(region.getRegionName(), is("Asia"));
     }
 
     @Test
     public void testToString() {
         Region region = new Region(4, "África");
-        assertEquals("África", region.toString());
+        assertThat(region.toString(), is("África"));
     }
 }
