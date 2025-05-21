@@ -13,6 +13,12 @@ import excepciones.DatoIncorrrectoException;
 import modelos.Warehouse;
 import utils.DBUtils;
 
+/**
+ * Clase DAO que implenta las operaciones de insertar, eliminar y actualizar
+ * WareHouse
+ * 
+ * 
+ */
 public class WarehousesDAO implements Dao<Warehouse> {
 
 	private final String QUERY_INSERTAR_ALMACEN = "INSERT INTO WAREHOUSES (WAREHOUSE_NAME, LOCATION_ID) VALUES (?, ?)";
@@ -20,6 +26,12 @@ public class WarehousesDAO implements Dao<Warehouse> {
 	private final String QUERY_ACTULIZAR_ALMACEN = "UPDATE WAREHOUSES SET WAREHOUSE_NAME = ?, LOCATION_ID = ? WHERE WAREHOUSE_ID = ?";
 	private final String QUERY_OBTENER_TODOS = "SELECT * FROM WAREHOUSES";
 
+	/**
+	 * Insertar un nuevo almacen en la base de datos
+	 * 
+	 * @param e Objeto a insetar
+	 * @throws DataAccessException Si ocurre un error durante la insercion
+	 */
 	@Override
 	public void insertar(Warehouse e) throws DataAccessException, ClassNotFoundException {
 		try (Connection conn = DBUtils.getConnection()) {
@@ -41,6 +53,13 @@ public class WarehousesDAO implements Dao<Warehouse> {
 		}
 	}
 
+	/**
+	 * Eliminar un almacen de la base de datos
+	 * 
+	 * @param e Objeto a eliminar atraves del warehouseId
+	 * @throws DataAccessException si el ID no es valido o hay un error de base de
+	 *                             datos
+	 */
 	@Override
 	public void eliminar(Warehouse e) throws DataAccessException, ClassNotFoundException {
 		if (e == null || e.getWareHouseId() <= 0) {
@@ -65,6 +84,14 @@ public class WarehousesDAO implements Dao<Warehouse> {
 		}
 
 	}
+
+	/**
+	 * Actualiza datos de un almacen en la base de datos
+	 * 
+	 * @param e Objeto con los nuevos datos
+	 * @throws DataAccessException si el ID no es válido o hay un error de base de
+	 *                             datos.
+	 */
 
 	@Override
 	public void actualizar(Warehouse e) throws DataAccessException, ClassNotFoundException {
@@ -93,6 +120,12 @@ public class WarehousesDAO implements Dao<Warehouse> {
 		}
 	}
 
+	/**
+	 * Obtiene todos los almacenes que contiene la base de datos
+	 * 
+	 * @return Lista de objetos de Warehouse
+	 * @throws DataAccessException si ocurre un error de acceso a los datos
+	 */
 	@Override
 	public List<Warehouse> obtenerTodos() throws DataAccessException, ClassNotFoundException {
 		List<Warehouse> almacenesList = new ArrayList<>();
@@ -115,7 +148,5 @@ public class WarehousesDAO implements Dao<Warehouse> {
 		}
 		return almacenesList;
 	}
-
-	
 
 }

@@ -12,6 +12,11 @@ import excepciones.DataAccessException;
 import modelos.Contact;
 import utils.DBUtils;
 
+/**
+ * Esta clase realiza las operaciones de insertar, eliminar, crear en base de datos
+ * Implementa el DAO
+ */
+
 public class ContactsDAO implements Dao<Contact> {
 
 	private final String QUERY_INSERTAR_CONTACTO = "INSERT INTO CONTACTS (FIRST_NAME, LAST_NAME, EMAIL, PHONE)";
@@ -20,6 +25,11 @@ public class ContactsDAO implements Dao<Contact> {
 	private final String QUERY_OBTENER_TODO = "SELECT * FROM CONTACTS";
 	private final String QUERY_OBTENER_CUSTOMER_POR_CONTACTO = "SELECT * FROM CONTACTS WHERE CUSTOMER_ID = ?";
 
+	
+	/**
+	 * @param c El contacto a insertar
+	 * @throws Lanzamos DataAccessException por si ocurre algun error en la capa de acceso
+	 */
 	@Override
 	public void insertar(Contact c) throws DataAccessException, ClassNotFoundException {
 
@@ -38,6 +48,10 @@ public class ContactsDAO implements Dao<Contact> {
 		}
 	}
 
+	/**
+	 * @param c El contacto a eliminar, se usa el contactoId
+	 * @throws Lanzamos DataAccessException por si ocurre algun error en la capa de acceso o si no encuentra la ID
+	 */
 	@Override
 	public void eliminar(Contact c) throws DataAccessException, ClassNotFoundException {
 
@@ -57,6 +71,10 @@ public class ContactsDAO implements Dao<Contact> {
 		}
 	}
 
+	/**
+	 * @param c El contacto para actualizar, se usa el contactId
+	 * @throws Lanzamos DataAccessException por si ocurre algun error en la capa de acceso o si no encuentra la ID
+	 */
 	@Override
 	public void actualizar(Contact c) throws DataAccessException, ClassNotFoundException {
 
@@ -77,6 +95,10 @@ public class ContactsDAO implements Dao<Contact> {
 
 	}
 
+	/**
+	 * @return Lista de todos los contactos encontrados
+	 * @throws Lanzamos DataAccessException por si ocurre algun error en la capa de acceso
+	 */
 	@Override
 	public List<Contact> obtenerTodos() throws DataAccessException, ClassNotFoundException {
 		List<Contact> contactosList = new ArrayList<>();

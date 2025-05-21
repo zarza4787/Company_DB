@@ -14,6 +14,11 @@ import excepciones.DatoIncorrrectoException;
 import modelos.Employee;
 import utils.DBUtils;
 
+/**
+ * Implementa las operaciones basicas para insertar, eliminar, actualizar
+ * Clase DAO para la gestión de empleados en la base de datos. 
+ */
+
 public class EmpleadoDAO implements Dao<Employee> {
 
 	private final String QUERY_INSERTAR_EMPLEADO = "INSERT INTO EMPLOYEES (FIRST_NAME, LAST_NAME, EMAIL, PHONE, HIRE_DATE, MANAGER_ID, JOB_TITLE) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -21,6 +26,13 @@ public class EmpleadoDAO implements Dao<Employee> {
 	private final String QUERY_ACTUALIZAR_EMPLEADO = "UPDATE EMPLOYEES SET FIRST_NAME = ?, LAST_NAME = ?, EMAIL = ?, PHONE = ?, JOB_TITLE = ? WHERE EMPLOYEE_ID = ?";
 	private final String QUERY_OBTENER_TODOS = "SELECT * FROM EMPLOYEES";
 
+	
+	/**
+	 * Insertar un nuevo empleado en la base de datos
+	 * 
+	 * @param e El empleado a insertar
+	 * @throws DataAccessException Si hay datos inválidos o error en la base de datos
+	 */
 	@Override
 	public void insertar(Employee e) throws DataAccessException, ClassNotFoundException {
 
@@ -47,6 +59,14 @@ public class EmpleadoDAO implements Dao<Employee> {
 		}
 	}
 
+	/**
+	 * Eliminar empleados de la base de datos
+	 * Actualiza a null el empleado en las tablas Orders y Employees
+	 * Se usa el autocommit para evitar errores en la base de datos
+	 * 
+	 * @param e El empleado a eliminar 
+	 */
+	@Override
 	public void eliminar(Employee e) throws DataAccessException, ClassNotFoundException {
 		Connection conn = null;
 
@@ -90,6 +110,10 @@ public class EmpleadoDAO implements Dao<Employee> {
 		}
 	}
 
+	/**
+	 * @param e El empleado a actualizar, se usa employeeId
+	 */
+	
 	@Override
 	public void actualizar(Employee e) throws DataAccessException, ClassNotFoundException {
 		try (Connection conn = DBUtils.getConnection()) {
@@ -108,6 +132,13 @@ public class EmpleadoDAO implements Dao<Employee> {
 			throw new DataAccessException("Hubo un error al actualizar el empleado", sql);
 		}
 	}
+	
+	/**
+	 * Obtener lista de empleados encontrados
+	 * 
+	 * @return Devulve lista de empleados
+	 * @throws Lanzamos DataAccessException por si ocurre algun error en la capa de acceso
+	 */
 
 	@Override
 	public List<Employee> obtenerTodos() throws DataAccessException, ClassNotFoundException {

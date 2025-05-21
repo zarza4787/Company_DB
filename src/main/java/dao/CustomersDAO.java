@@ -12,6 +12,11 @@ import excepciones.DataAccessException;
 import modelos.Customer;
 import utils.DBUtils;
 
+/**
+ * Esta clase realiza las operaciones de insertar, eliminar, crear en base de
+ * datos Implementa el DAO
+ */
+
 public class CustomersDAO implements Dao<Customer> {
 
 	private final String QUERY_INSERTAR_CUSTOMER = "INSERT INTO CUSTOMERS (NAME, ADDRESS, WEBSITE, CREDIT_LIMIT) VALUES (?, ?, ?, ?)";
@@ -19,6 +24,12 @@ public class CustomersDAO implements Dao<Customer> {
 	private final String QUERY_ELIMINAR_CUSTOMER = "DELETE FROM CUSTOMERS WHERE CUSTOMER_ID = ?";
 	private final String QUERY_OBTENER_TODOS_CUSTOMERS = "SELECT * FROM CUSTOMERS";
 
+	
+	/**
+	 * 
+	 * @param c El customer a insertar
+	 * @throws Lanzamos DataAccessException por si ocurre algun error en la capa de acceso
+	 */
 	@Override
 	public void insertar(Customer c) throws DataAccessException, ClassNotFoundException {
 
@@ -42,6 +53,11 @@ public class CustomersDAO implements Dao<Customer> {
 		}
 	}
 
+	
+	/**
+	 * @param c El customer a eliminar, se usa el customerId
+	 * @throws Lanzamos DataAccessException por si ocurre algun error en la capa de acceso o no encuentra la ID
+	 */
 	@Override
 	public void eliminar(Customer c) throws DataAccessException, ClassNotFoundException {
 		try (Connection conn = DBUtils.getConnection()) {
@@ -62,6 +78,10 @@ public class CustomersDAO implements Dao<Customer> {
 
 	}
 
+	/**
+	 * @param c El customer a eliminar
+	 * @throws Lanzamos DataAccessException por si ocurre algun error en la capa de acceso
+	 */
 	@Override
 	public void actualizar(Customer c) throws DataAccessException, ClassNotFoundException {
 		try (Connection conn = DBUtils.getConnection()) {
@@ -81,7 +101,10 @@ public class CustomersDAO implements Dao<Customer> {
 
 	}
 
-
+	/**
+	 * @return Lista con todos los clientes
+	 * @throws Lanzamos DataAccessException por si ocurre algun error en la capa de acceso
+	 */
 	@Override
 	public List<Customer> obtenerTodos() throws DataAccessException, ClassNotFoundException {
 		List<Customer> customersList = new ArrayList<Customer>();
@@ -107,6 +130,15 @@ public class CustomersDAO implements Dao<Customer> {
 
 		return customersList;
 	}
+	
+	/**
+	 * Obtiene un cliente por su ID.
+	 * 
+	 * @param customerId
+	 * @return Cliente encontrado o null
+	 * @throws DataAccessException Si ocurre un error en la base de datos
+	 * @throws ClassNotFoundException
+	 */
 
 	public Customer obtenerPorId(long customerId) throws DataAccessException, ClassNotFoundException {
 		String QUERY_OBTENER_POR_ID = "SELECT * FROM CUSTOMERS WHERE customer_id = ?";
