@@ -105,11 +105,11 @@ public class PedidosClienteVistaDetalle extends JDialog {
 					} else if (!nombreTexto.isEmpty()) {
 						cargarPedidosPorNombre(nombreTexto);
 					} else {
-						JOptionPane.showMessageDialog(null, "Introduce un ID o un nombre de cliente.", "Aviso",
+						JOptionPane.showMessageDialog(null, "Introduce un ID o un nombre de cliente", "Aviso",
 								JOptionPane.WARNING_MESSAGE);
 					}
 				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null, "ID de cliente inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "El ID que has introducido no es valido", "Error", JOptionPane.ERROR_MESSAGE);
 				} catch (Exception ex) {
 					ex.printStackTrace();
 					JOptionPane.showMessageDialog(null, "Error al cargar los pedidos.", "Error",

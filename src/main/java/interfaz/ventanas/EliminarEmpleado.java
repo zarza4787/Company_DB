@@ -102,13 +102,10 @@ public class EliminarEmpleado extends JDialog {
 			if (confirm == JOptionPane.YES_OPTION) {
 				try {
 					Object id = table.getValueAt(filaSeleccionada, 0);
-					System.out.println("ID seleccionado en la tabla: " + id);
 
 					long employeeId = Long.parseLong(id.toString());
-					System.out.println("ID convertido a long: " + employeeId);
 
 					empleadoController.eliminarEmpleado(employeeId);
-					System.out.println("Empleado eliminado correctamente.");
 
 					cargarEmpleadosEnTabla();
 
