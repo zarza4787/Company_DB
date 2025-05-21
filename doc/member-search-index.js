@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"dao.modelos","c":"DaoRegion","l":"obtenerPaisesPorRegion(int)"},{"p":"dao.modelos","c":"DaoRegion","l":"obtenerRegiones()"},{"p":"dao.modelos","c":"DaoRegion","l":"obtenerUbicacionesPorPais(String)","u":"obtenerUbicacionesPorPais(java.lang.String)"}];updateSearchResults();
