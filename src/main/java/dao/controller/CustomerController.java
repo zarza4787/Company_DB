@@ -14,10 +14,10 @@ public class CustomerController {
 		this.customerDAO = new CustomersDAO();
 	}
 
-	public void crearCustomer(String name, String address, String website, double creditLimit)
+	public void crearCustomer(long customerId, String name, String address, String website, double creditLimit)
 			throws DataAccessException, ClassNotFoundException {
 		try {
-			Customer nuevoCustomer = new Customer(name, address, website, creditLimit);
+			Customer nuevoCustomer = new Customer(customerId, name, address, website, creditLimit);
 			customerDAO.insertar(nuevoCustomer);
 		} catch (DataAccessException e) {
 			throw new DataAccessException("Hubo un error al crear el cliente", e);

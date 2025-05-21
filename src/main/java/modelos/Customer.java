@@ -14,14 +14,6 @@ public class Customer {
 		this.creditLimit = creditLimit;
 	}
 
-	// Constructor para crear customer sin customerID
-	public Customer(String name, String address, String website, double creditLimit) {
-		this.name = name;
-		this.address = address;
-		this.website = website;
-		this.creditLimit = creditLimit;
-	}
-
 	// Constructor para eliminar customer
 	public Customer(long customerId) {
 		this.customerId = customerId;

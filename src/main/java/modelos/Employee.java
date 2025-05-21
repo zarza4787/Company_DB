@@ -14,6 +14,8 @@ public class Employee {
 	private long managerId;
 	private String jobTitle;
 
+	
+	//Constructor empleado
 	public Employee(long employeeId, String firstName, String lastName, String email, String phone, String hireDate,
 			long managerId, String jobTitle) throws DatoIncorrrectoException {
 
