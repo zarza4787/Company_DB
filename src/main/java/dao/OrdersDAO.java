@@ -19,7 +19,7 @@ public class OrdersDAO implements DaoPedidos {
 	private final String QUERY_OBTENER_PEDIDOS_POR_CLIENTE = "SELECT * FROM ORDERS WHERE CUSTOMER_ID = ?";
 	private final String QUERY_OBTENER_DETALLES_PEDIDOS_POR_ORDERID = "SELECT * FROM ORDER_ITEMS WHERE ORDER_ID = ?";
 	private final String QUERY_OBTENER_PEDIDOS_POR_NOMBRE_CLIENTE = "SELECT * FROM ORDERS o JOIN CUSTOMERS c ON O.CUSTOMER_ID = c.customer_id WHERE LOWER(c.name) LIKE LOWER(?)";
-			
+		
 			
 	@Override
 	public List<Order> obtenerPedidosPorClienteID(long customerId) throws DataAccessException, ClassNotFoundException {

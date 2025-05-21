@@ -55,6 +55,7 @@ public class AltaAlmacen extends JDialog {
 	private List<Location> listaLocations;
 
 	public AltaAlmacen() {
+		setResizable(false);
 		setTitle("Insertar Almacen");
 		setSize(600, 600);
 		setLocation((Utils.AnchoPantalla() - this.getWidth()) / 2, (Utils.AltoPantalla() - this.getHeight()) / 2);

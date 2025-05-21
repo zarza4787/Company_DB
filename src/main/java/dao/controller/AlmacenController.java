@@ -42,6 +42,7 @@ public class AlmacenController {
 			throw new DataAccessException("Hubo un error al actualizar el almacen" + e);
 		}
 	}
+	
 
 	public List<Warehouse> obtenerTodosAlmacenes() throws DataAccessException {
 		try {

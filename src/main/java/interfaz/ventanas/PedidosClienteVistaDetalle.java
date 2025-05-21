@@ -109,7 +109,8 @@ public class PedidosClienteVistaDetalle extends JDialog {
 								JOptionPane.WARNING_MESSAGE);
 					}
 				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null, "El ID que has introducido no es valido", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "El ID que has introducido no es valido", "Error",
+							JOptionPane.ERROR_MESSAGE);
 				} catch (Exception ex) {
 					ex.printStackTrace();
 					JOptionPane.showMessageDialog(null, "Error al cargar los pedidos.", "Error",
@@ -121,7 +122,6 @@ public class PedidosClienteVistaDetalle extends JDialog {
 		btnBuscarPedidos.setBounds(112, 494, 150, 23);
 		contentPanel.add(btnBuscarPedidos);
 
-		// Botón detalles (puede completarse más adelante)
 		JButton btnDetalles = new JButton("Detalles");
 		btnDetalles.setEnabled(false);
 		btnDetalles.setBounds(10, 494, 89, 23);
@@ -149,9 +149,9 @@ public class PedidosClienteVistaDetalle extends JDialog {
 		List<Order> pedidos = ordersController.obtenerPedidosPorCliente(customerId);
 
 		for (Order o : pedidos) {
-			String fechaFormateada = o.getOrderDate() != null ? sdf.format(o.getOrderDate()) : "Sin fecha";
-			tableModel.addRow(new Object[] { o.getOrderId(), o.getCustomerId(), o.getStatus(), o.getSalesmanId(),
-					fechaFormateada });
+			String fecha = o.getOrderDate() != null ? sdf.format(o.getOrderDate()) : "Sin fecha";
+			tableModel.addRow(
+					new Object[] { o.getOrderId(), o.getCustomerId(), o.getStatus(), o.getSalesmanId(), fecha });
 		}
 	}
 
@@ -162,20 +162,9 @@ public class PedidosClienteVistaDetalle extends JDialog {
 		List<Order> pedidos = ordersController.obtenerPedidosPorClienteNombre(nombreCliente);
 
 		for (Order o : pedidos) {
-			String fechaFormateada = o.getOrderDate() != null ? sdf.format(o.getOrderDate()) : "Sin fecha";
-			tableModel.addRow(new Object[] { o.getOrderId(), o.getCustomerId(), o.getStatus(), o.getSalesmanId(),
-					fechaFormateada });
-		}
-	}
-	
-	public void cargarDetallesPedido(long orderId) throws ClassNotFoundException, DataAccessException {
-		
-		tableModel.setRowCount(0);
-		
-		List<OrderItems> listaPedidosDetalles = ordersController.obtenerDetallePedido(orderId);
-		
-		for (OrderItems orderItems : listaPedidosDetalles) {
-			
+			String fecha = o.getOrderDate() != null ? sdf.format(o.getOrderDate()) : "Sin fecha";
+			tableModel.addRow(
+					new Object[] { o.getOrderId(), o.getCustomerId(), o.getStatus(), o.getSalesmanId(), fecha });
 		}
 	}
 
